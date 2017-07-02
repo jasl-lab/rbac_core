@@ -1,0 +1,10 @@
+<nav class="nav has-shadow">
+  <div class="container">
+    <div class="nav-left">
+      <%= link_to 'RBAC Core', root_path, class: 'nav-item brand' %>
+    </div>
+    <div class="nav-right nav-menu">
+      <%= link_to 'Home', root_path, class: "nav-item is-tab #{"is-active" if current_page?(root_path)}" %>
+    </div>
+  </div>
+</nav>
