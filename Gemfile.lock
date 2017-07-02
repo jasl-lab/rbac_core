@@ -52,6 +52,8 @@ GEM
     concurrent-ruby (1.0.5)
     erubi (1.6.1)
     execjs (2.7.0)
+    font-awesome-sass (4.7.0)
+      sass (>= 3.2)
     globalid (0.4.0)
       activesupport (>= 4.2.0)
     i18n (0.8.4)
@@ -144,6 +146,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  font-awesome-sass
   pry-byebug
   pry-rails
   puma

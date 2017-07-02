@@ -5,6 +5,12 @@
     </div>
     <div class="nav-right nav-menu">
       <%= link_to 'Home', root_path, class: "nav-item is-tab #{"is-active" if current_page?(root_path)}" %>
+      <%= link_to 'Users', users_path, class: "nav-item is-tab #{"is-active" if controller_name == "users"}" %>
+      <%= link_to 'Projects', projects_path, class: "nav-item is-tab #{"is-active" if %w(projects tasks).include? controller_name}" %>
+
+      <% if current_user %>
+        <%= link_to "Sign out #{current_user.name}", sign_out_path, class: "nav-item is-tab", method: :delete %>
+      <% end %>
     </div>
   </div>
 </nav>
