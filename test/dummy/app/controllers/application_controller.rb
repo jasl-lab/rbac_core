@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
 
   def require_signed_in
     unless current_user
-      redirect root_url
+      redirect_to root_url
     end
   end
 end
