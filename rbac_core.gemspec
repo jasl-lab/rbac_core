@@ -6,7 +6,7 @@ require "rbac_core/version"
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |s|
   s.name        = "rbac_core"
-  s.version     = RBACCore::VERSION
+  s.version     = RbacCore::VERSION
   s.authors     = ["jasl"]
   s.email       = ["jasl9187@hotmail.com"]
   s.homepage    = "https://github.com/jasl-lab/rbac_core"

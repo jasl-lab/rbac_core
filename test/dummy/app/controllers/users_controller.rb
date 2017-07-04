@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save
+    if @user.save!
       redirect_to users_url, notice: 'User was successfully created.'
     else
       render :new
@@ -49,6 +49,6 @@ class UsersController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def user_params
-      params.require(:user).permit(:name)
+      params.require(:user).permit(:name, role_ids: [])
     end
 end

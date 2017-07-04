@@ -1,4 +1,4 @@
-module RBACCore::Concerns
+module RbacCore::Concerns
   module OptionsModel
     module Attributes
       extend ActiveSupport::Concern
@@ -7,7 +7,7 @@ module RBACCore::Concerns
         def attribute(name, cast_type, default: nil, array: false)
           name = name.to_sym
           if dangerous_attribute_method?(name)
-            raise ArgumentError, "#{name} is defined by OptionsModel. Check to make sure that you don't have an attribute or method with the same name."
+            raise ArgumentError, "#{name} is defined by #{self.class}. Check to make sure that you don't have an attribute or method with the same name."
           end
 
           ActiveModel::Type.lookup(cast_type)
@@ -81,7 +81,7 @@ module RBACCore::Concerns
 
           name = name.to_sym
           if dangerous_attribute_method?(name)
-            raise ArgumentError, "#{name} is defined by OptionsModel. Check to make sure that you don't have an attribute or method with the same name."
+            raise ArgumentError, "#{name} is defined by #{self.class}. Check to make sure that you don't have an attribute or method with the same name."
           end
 
           if class_name.present?
@@ -135,7 +135,7 @@ module RBACCore::Concerns
         # A method name is 'dangerous' if it is already (re)defined by OptionsModel, but
         # not by any ancestors. (So 'puts' is not dangerous but 'save' is.)
         def dangerous_attribute_method?(name) # :nodoc:
-          method_defined_within?(name, OptionsModel)
+          method_defined_within?(name, self.class)
         end
 
         def method_defined_within?(name, klass, superklass = klass.superclass) # :nodoc:

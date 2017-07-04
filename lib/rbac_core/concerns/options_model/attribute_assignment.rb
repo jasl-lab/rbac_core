@@ -1,4 +1,4 @@
-module RBACCore::Concerns
+module RbacCore::Concerns
   module OptionsModel
     module AttributeAssignment
       extend ActiveSupport::Concern

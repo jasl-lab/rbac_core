@@ -1,4 +1,4 @@
-module RBACCore::Concerns
+module RbacCore::Concerns
   module OptionsModel
     module Serialization
       extend ActiveSupport::Concern
@@ -8,7 +8,7 @@ module RBACCore::Concerns
 
         self.class.attribute_names.each do |attribute_name|
           attribute = public_send(attribute_name)
-          if attribute.is_a?(OptionsModel)
+          if attribute.is_a?(self.class)
             hash[attribute_name] = attribute.to_h
           else
             hash[attribute_name] = attribute
@@ -26,9 +26,9 @@ module RBACCore::Concerns
         def dump(obj)
           return YAML.dump({}) unless obj
 
-          unless obj.is_a? OptionsModel
-            raise SerializationTypeMismatch,
-                  "can't dump: was supposed to be a #{OptionsModel}, but was a #{obj.class}. -- #{obj.inspect}"
+          unless obj.is_a? self
+            raise ArgumentError,
+                  "can't dump: was supposed to be a #{self}, but was a #{obj.class}. -- #{obj.inspect}"
           end
 
           YAML.dump obj.to_h
@@ -41,7 +41,7 @@ module RBACCore::Concerns
           hash = YAML.load(yaml) || Hash.new
 
           unless hash.is_a? Hash
-            raise SerializationTypeMismatch,
+            raise ArgumentError,
                   "can't load: was supposed to be a #{Hash}, but was a #{hash.class}. -- #{hash.inspect}"
           end
 

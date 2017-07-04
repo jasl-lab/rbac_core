@@ -1,5 +1,5 @@
-module RBACCore
+module RbacCore
   class Engine < ::Rails::Engine
-    isolate_namespace RBACCore
+    isolate_namespace RbacCore
   end
 end

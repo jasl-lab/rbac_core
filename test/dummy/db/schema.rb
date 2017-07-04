@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170703193631) do
+ActiveRecord::Schema.define(version: 20170705175121) do
 
   create_table "projects", force: :cascade do |t|
     t.string "title"
@@ -18,6 +18,24 @@ ActiveRecord::Schema.define(version: 20170703193631) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
+  end
+
+  create_table "rbac_core_assignments", force: :cascade do |t|
+    t.string "subjectable_type", null: false
+    t.integer "subjectable_id", null: false
+    t.integer "role_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["role_id"], name: "index_rbac_core_assignments_on_role_id"
+    t.index ["subjectable_type", "subjectable_id"], name: "index_rbac_core_assignments_on_subjectable"
+  end
+
+  create_table "rbac_core_roles", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "permissions", default: "", null: false
+    t.string "type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tasks", force: :cascade do |t|

@@ -1,7 +1,7 @@
 require 'test_helper'
 
-class RBACCore::Test < ActiveSupport::TestCase
+class RbacCore::Test < ActiveSupport::TestCase
   test "truth" do
-    assert_kind_of Module, RBACCore
+    assert_kind_of Module, RbacCore
   end
 end
