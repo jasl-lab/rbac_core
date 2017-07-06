@@ -51,7 +51,7 @@ class TasksController < ApplicationController
     end
 
     def set_task
-      @task = @project.find(params[:id])
+      @task = @project.tasks.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
